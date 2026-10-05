@@ -1,0 +1,44 @@
+; Git 全局配置模板
+; 用法：把本文件内容合并进 C:\Users\<你>\.gitconfig
+; 或直接执行： git config --global --add include.path <本文件路径>
+;
+; ⚠️ 下面 user.name / user.email 请改成你自己的，且**不要**填进任何公开仓库。
+; 本模板里用占位符，填错的话 commit 作者会变成 "yourname"。
+
+[user]
+	name = yourname
+	email = yourname@example.com
+
+[init]
+	defaultBranch = main
+
+[core]
+	; Windows 上关闭自动换行转换，避免整个文件被标记为已修改
+	autocrlf = false
+	; 中文文件名不转义成八进制
+	quotepath = false
+	fsmonitor = true
+
+[fetch]
+	; 拉取时自动清理远程已删除的分支
+	prune = true
+
+[pull]
+	; 团队协作用 merge 比 rebase 安全
+	rebase = false
+
+[push]
+	default = simple
+
+[credential]
+	; 凭据交给 Git Credential Manager：登录一次就不用再登
+	helper = manager
+
+[advice]
+	detachedHead = false
+
+[safe]
+	; ⚠️ 这条会关掉所有目录的所有权检查。
+	; 它是本机历史遗留的安全兜底，**公开分享前请删掉这一节**——
+	; 别人的仓库若被恶意构造的符号链接指向敏感文件，本节会让 git 直接写入。
+	directory = *

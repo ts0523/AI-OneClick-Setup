@@ -1,0 +1,62 @@
+[
+  {
+    "src": "%USERPROFILE%\\AGENTS.md",
+    "rel": "workbuddy/AGENTS.md",
+    "status": "file-copied"
+  },
+  {
+    "src": "%USERPROFILE%\\.workbuddy\\USER.md",
+    "rel": "workbuddy/USER.md",
+    "status": "file-copied"
+  },
+  {
+    "src": "%USERPROFILE%\\.workbuddy\\SOUL.md",
+    "rel": "workbuddy/SOUL.md",
+    "status": "file-copied"
+  },
+  {
+    "src": "%USERPROFILE%\\.workbuddy\\IDENTITY.md",
+    "rel": "workbuddy/IDENTITY.md",
+    "status": "file-copied"
+  },
+  {
+    "src": "%USERPROFILE%\\.cursor\\rules\\skill-library-unified.mdc",
+    "rel": "cursor/rules-skill-library-unified.mdc",
+    "status": "file-copied"
+  },
+  {
+    "src": "%USERPROFILE%\\.cursor\\rules\\app-launcher-script.mdc",
+    "rel": "cursor/rules-app-launcher-script.mdc",
+    "status": "file-copied"
+  },
+  {
+    "src": "%USERPROFILE%\\.cursor\\cli-config.json",
+    "rel": "cursor/cli-config.json",
+    "status": "file-copied"
+  },
+  {
+    "src": "%USERPROFILE%\\.claude\\CLAUDE.md",
+    "rel": "claude-code/CLAUDE.md",
+    "status": "file-copied"
+  },
+  {
+    "src": "%USERPROFILE%\\.claude\\settings.json",
+    "rel": "claude-code/settings.json",
+    "status": "file-copied"
+  },
+  {
+    "src": "%USERPROFILE%\\.vscode",
+    "rel": "vscode/.vscode-user",
+    "status": "dir-copied"
+  },
+  {
+    "src": "%USERPROFILE%\\AppData\\Roaming\\Code\\User\\settings.json",
+    "rel": "vscode/settings.json",
+    "status": "file-copied"
+  },
+  {
+    "src": "%USERPROFILE%\\.cursor-byok-v3\\rules",
+    "rel": "cursor-byok/rules",
+    "status": "dir-copied"
+  }
+]

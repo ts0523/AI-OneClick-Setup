@@ -1,0 +1,44 @@
+{
+  "app_name": "PixelWilderness",
+  "app_name_cn": "像素荒野",
+  "type": "游戏",
+  "category": "像素风生存游戏",
+  "platforms": ["Windows 10/11"],
+  "version": "1.0",
+  "language": "简体中文",
+  "one_liner": "零外部素材、纯代码生成的 2D 俯视像素生存游戏",
+  "features": [
+    "程序化生成像素精灵 —— 所有角色、地形、道具由调色板与像素字符串实时生成，无任何第三方素材",
+    "PCM 实时合成音效 —— 不打包任何音频文件，整体体积小于 30MB",
+    "俯视视角生存玩法 —— 采集、建造、夜晚防守，单局节奏紧凑",
+    "本地存档完全离线 —— 不需要联网、不需要注册账号"
+  ],
+  "differentiators": [
+    "整包体积小于 30MB，网络差的地区也能快速下载",
+    "全程序化生成，每次开局地形与资源分布都不同",
+    "无运行库依赖，解压即运行"
+  ],
+  "keywords": {
+    "core": "像素风生存游戏",
+    "env": "PC电脑单机版",
+    "diff": "免安装 中文 离线可玩",
+    "scene": "独立游戏"
+  },
+  "audience": ["单机游戏玩家", "像素风爱好者"],
+  "price_tiers": [
+    { "name": "标准版 · 完整游戏", "price": 12.9, "includes": "游戏本体 + 后续更新" },
+    { "name": "支持版 · 含美术资源", "price": 24.9, "includes": "本体 + 开发者调色板与音效源码" }
+  ],
+  "delivery": "网盘直链 + 提取码",
+  "has_ai_feature": false,
+  "ai_byok": false,
+  "ip_risk_notes": "全部精灵与音效为程序化生成，无外部素材引用，无第三方作品名",
+  "seller_name": "ts",
+  "seller": {
+    "age": 13,
+    "has_id_card": true,
+    "has_phone": false,
+    "has_bank_or_alipay": false,
+    "can_open_store": false
+  }
+}

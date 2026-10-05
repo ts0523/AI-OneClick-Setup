@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>{{APP_NAME}} 商品详情页</title>
+<style>
+  :root{
+    --ink:#1c1c1e; --ink-2:#4b4b52; --ink-3:#8a8a95;
+    --bg:#ffffff; --panel:#f5f6f8; --line:#e6e8ec; --accent:#c0392b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:#dfe1e6; font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;
+    color:var(--ink); -webkit-font-smoothing:antialiased; padding:24px 0;
+  }
+  .page{width:750px;margin:0 auto;background:var(--bg);box-shadow:0 2px 16px rgba(0,0,0,.12)}
+  section{padding:48px 44px;border-bottom:1px solid var(--line)}
+  section:last-child{border-bottom:none}
+
+  /* 第 1 屏 */
+  .hero{background:linear-gradient(160deg,#fafbfc 0%,#eef0f4 100%);text-align:center;padding:64px 44px}
+  .hero h1{font-size:44px;letter-spacing:2px;line-height:1.2}
+  .hero .sub{font-size:23px;color:var(--ink-2);margin-top:18px;line-height:1.6}
+  .hero .badges{margin-top:30px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .badge{background:#fff;border:1px solid var(--line);border-radius:100px;padding:8px 18px;font-size:17px;color:var(--ink-2)}
+  .hero .stage{
+    margin-top:34px;height:300px;border-radius:10px;border:1px solid var(--line);
+    background:#e9ebef;display:flex;align-items:center;justify-content:center;
+    color:var(--ink-3);font-size:17px;letter-spacing:1px;
+  }
+
+  h2{font-size:30px;margin-bottom:8px;letter-spacing:1px}
+  h2 .bar{display:inline-block;width:5px;height:26px;background:var(--accent);border-radius:3px;margin-right:12px;vertical-align:-3px}
+  .lead{font-size:18px;color:var(--ink-3);margin-bottom:30px}
+
+  /* 功能网格 */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .card{background:var(--panel);border-radius:10px;padding:22px}
+  .card .k{font-size:21px;font-weight:600;margin-bottom:8px}
+  .card .v{font-size:17px;color:var(--ink-2);line-height:1.65}
+
+  /* 差异点 */
+  .diff{list-style:none;display:flex;flex-direction:column;gap:16px}
+  .diff li{display:flex;gap:14px;font-size:19px;line-height:1.6}
+  .diff li::before{content:"›";color:var(--accent);font-weight:700;font-size:24px;line-height:1.3}
+
+  /* 数据表 */
+  table{width:100%;border-collapse:collapse;font-size:18px}
+  th,td{padding:15px 14px;border-bottom:1px solid var(--line);text-align:left}
+  th{color:var(--ink-3);font-weight:500;width:34%;background:var(--panel)}
+  td{color:var(--ink-2)}
+
+  /* 价格 */
+  .price-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+  .price-card{border:1.5px solid var(--line);border-radius:12px;padding:26px 22px;background:#fff}
+  .price-card.hot{border-color:var(--accent);position:relative}
+  .price-card.hot::after{
+    content:"主推";position:absolute;top:-12px;left:22px;background:var(--accent);
+    color:#fff;font-size:14px;padding:3px 12px;border-radius:100px;letter-spacing:1px
+  }
+  .price-card .tier{font-size:20px;font-weight:600}
+  .price-card .num{font-size:36px;color:var(--accent);font-weight:700;margin:12px 0}
+  .price-card .num small{font-size:20px}
+  .price-card .inc{font-size:16px;color:var(--ink-2);line-height:1.7}
+
+  /* 三步 */
+  .steps{display:flex;gap:14px}
+  .step{flex:1;text-align:center;background:var(--panel);border-radius:10px;padding:24px 14px}
+  .step .n{width:34px;height:34px;line-height:34px;border-radius:50%;background:var(--accent);color:#fff;
+    font-weight:700;margin:0 auto 14px;font-size:18px}
+  .step .t{font-size:18px;font-weight:600;margin-bottom:6px}
+  .step .d{font-size:15px;color:var(--ink-3);line-height:1.6}
+
+  /* FAQ */
+  .faq{display:flex;flex-direction:column;gap:20px}
+  .faq .q{font-size:19px;font-weight:600;margin-bottom:6px}
+  .faq .a{font-size:17px;color:var(--ink-2);line-height:1.7}
+  .notice{background:#fdf3f2;border-left:4px solid var(--accent);border-radius:6px;
+    padding:18px 22px;font-size:16px;color:#7d2a20;line-height:1.8;margin-bottom:26px}
+  footer{padding:38px 44px;text-align:center;color:var(--ink-3);font-size:15px;line-height:2;background:var(--panel)}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <section class="hero">
+    <h1>{{APP_NAME}}</h1>
+    <p class="sub">{{ONE_LINER}}</p>
+    <div class="badges">{{BADGES}}</div>
+    <div class="stage">此处替换为应用真实运行截图（750×420）</div>
+  </section>
+
+  <section>
+    <h2><span class="bar"></span>核心功能</h2>
+    <p class="lead">买到的就是这个东西，说清楚不绕弯</p>
+    <div class="grid">{{FEATURE_CARDS}}</div>
+  </section>
+
+  <section>
+    <h2><span class="bar"></span>和同类不一样在哪</h2>
+    <p class="lead">只写可核对的事实</p>
+    <ul class="diff">{{DIFF_LIST}}</ul>
+  </section>
+
+  <section>
+    <h2><span class="bar"></span>规格与运行环境</h2>
+    <table>{{SPEC_ROWS}}</table>
+  </section>
+
+  <section>
+    <h2><span class="bar"></span>版本与价格</h2>
+    <p class="lead">按需选，不捆绑</p>
+    <div class="price-row">{{PRICE_CARDS}}</div>
+  </section>
+
+  <section>
+    <h2><span class="bar"></span>怎么拿到</h2>
+    <p class="lead">付款后三步即可开玩</p>
+    <div class="steps">{{STEPS}}</div>
+  </section>
+
+  <section>
+    <h2><span class="bar"></span>常见问题</h2>
+    <div class="notice">
+      虚拟商品 · 一经发货不支持退款。购买前请确认运行环境满足下方配置要求。
+    </div>
+    <div class="faq">{{FAQ_ITEMS}}</div>
+  </section>
+
+  <footer>{{FOOTER_NOTE}}</footer>
+</div>
+</body>
+</html>

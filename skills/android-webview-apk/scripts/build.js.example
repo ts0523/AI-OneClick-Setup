@@ -1,0 +1,242 @@
+/*
+ * build.js —— 把 CityRun 打成可安装的 APK。
+ *
+ * 不依赖 Gradle / Android Studio，全流程手工串起来：
+ *   aapt2 compile  ->  资源编译
+ *   aapt2 link     ->  链接资源 + 打进 assets（含 index.html / 字体 / 图片）
+ *   javac          ->  编译 MainActivity.java
+ *   d8             ->  class -> classes.dex
+ *   zipadd         ->  把 classes.dex 追加进 APK（保持既有偏移，不破坏对齐）
+ *   zipalign       ->  4 字节对齐（resources.arsc 必须未压缩 + 对齐）
+ *   apksigner      ->  v1 + v2 签名
+ *
+ * 用法: node build.js
+ */
+'use strict';
+const fs = require('fs');
+const path = require('path');
+const { execFileSync } = require('child_process');
+
+/* ============================ 路径 ============================ */
+const ROOT = path.resolve(__dirname, '..');                       // CityRun/
+const ANDROID = path.join(ROOT, 'android');
+const TC = path.resolve(ROOT, '..', '.workbuddy', 'toolchain');
+const JDK = path.join(TC, 'jdk', 'jdk-17.0.2');
+const JAVAC = path.join(JDK, 'bin', 'javac.exe');
+const JAVA = path.join(JDK, 'bin', 'java.exe');
+const KEYTOOL = path.join(JDK, 'bin', 'keytool.exe');
+const BT = path.join(TC, 'sdk-bt', 'android-14');
+const AAPT2 = path.join(BT, 'aapt2.exe');
+const ZIPALIGN = path.join(BT, 'zipalign.exe');
+const D8_JAR = path.join(BT, 'lib', 'd8.jar');
+const SIGNER_JAR = path.join(BT, 'lib', 'apksigner.jar');
+const ANDROID_JAR = path.join(TC, 'sdk-plat', 'android-34', 'android.jar');
+
+const BUILD = path.join(ANDROID, 'build');
+const WWW = path.join(BUILD, 'www');
+const GEN = path.join(BUILD, 'gen');
+const CLASSES = path.join(BUILD, 'classes');
+const DEX = path.join(BUILD, 'dex');
+const KEYSTORE = path.join(ANDROID, 'cityrun.keystore');
+const OUT_APK = path.join(ROOT, 'CityRun.apk');
+
+const KS_PASS = 'cityrun2026';
+const KS_ALIAS = 'cityrun';
+
+/* ============================ 工具 ============================ */
+function run(bin, args, label) {
+  const t0 = Date.now();
+  try {
+    const out = execFileSync(bin, args, {
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'pipe'],
+      maxBuffer: 64 * 1024 * 1024,
+      cwd: ANDROID,
+    });
+    const ms = Date.now() - t0;
+    console.log(`[ok]   ${label}  (${ms}ms)`);
+    if (out && out.trim()) console.log(indent(out));
+    return out;
+  } catch (e) {
+    const ms = Date.now() - t0;
+    console.log(`[FAIL] ${label}  (${ms}ms)`);
+    if (e.stdout) console.log(indent(e.stdout.toString()));
+    if (e.stderr) console.log(indent(e.stderr.toString()));
+    throw new Error(`${label} 失败`);
+  }
+}
+
+function indent(s) {
+  return s.trimEnd().split('\n').map((l) => '       ' + l).join('\n');
+}
+
+function step(n, title) {
+  console.log(`\n──── ${n}. ${title} ────`);
+}
+
+function rmrf(p) {
+  if (fs.existsSync(p)) fs.rmSync(p, { recursive: true, force: true });
+}
+
+/* ============================ 开始 ============================ */
+console.log('CityRun -> APK');
+console.log('toolchain : ' + TC);
+console.log('output    : ' + OUT_APK);
+
+/* ---- 0. 环境自检 ---- */
+step(0, '环境自检');
+for (const [p, what] of [[JAVAC, 'javac'], [AAPT2, 'aapt2'], [ZIPALIGN, 'zipalign'],
+  [D8_JAR, 'd8.jar'], [SIGNER_JAR, 'apksigner.jar'], [ANDROID_JAR, 'android.jar'],
+  [KEYTOOL, 'keytool']]) {
+  if (!fs.existsSync(p)) throw new Error(`缺少 ${what}: ${p}`);
+  console.log(`[ok]   ${what}`);
+}
+
+/* ---- 1. 清理 ---- */
+step(1, '清理 build 目录');
+rmrf(BUILD);
+fs.mkdirSync(BUILD, { recursive: true });
+
+/* ---- 2. 装配 web 资源 ---- */
+step(2, '装配 assets（index.html + assets/）');
+fs.mkdirSync(WWW, { recursive: true });
+fs.cpSync(path.join(ROOT, 'index.html'), path.join(WWW, 'index.html'));
+fs.cpSync(path.join(ROOT, 'assets'), path.join(WWW, 'assets'), { recursive: true });
+const bytes = (d) => fs.readdirSync(d, { withFileTypes: true })
+  .reduce((n, e) => n + (e.isDirectory() ? bytes(path.join(d, e.name)) : fs.statSync(path.join(d, e.name)).size), 0);
+console.log(`[ok]   index.html          ${fs.statSync(path.join(WWW, 'index.html')).size} B`);
+console.log(`[ok]   assets/             ${bytes(path.join(WWW, 'assets'))} B`);
+
+/* ---- 3. 生成启动图标 ---- */
+step(3, '生成启动图标（Java2D，5 种密度）');
+run(JAVAC, ['-encoding', 'UTF-8', '-d', path.join(BUILD, 'tools'), path.join(ANDROID, 'tools', 'IconGen.java')], 'javac IconGen.java');
+run(JAVA, ['-cp', path.join(BUILD, 'tools'), 'IconGen', path.join(ANDROID, 'res')], 'run IconGen');
+
+/* ---- 4. aapt2 compile ---- */
+step(4, 'aapt2 compile（编译 res/）');
+const RES_ZIP = path.join(BUILD, 'res.zip');
+run(AAPT2, ['compile', '--dir', path.join(ANDROID, 'res'), '-o', RES_ZIP], 'aapt2 compile');
+
+/* ---- 5. aapt2 link ---- */
+step(5, 'aapt2 link（生成 R.java + 基座 APK）');
+const BASE_APK = path.join(BUILD, 'base.apk');
+run(AAPT2, [
+  'link',
+  '-o', BASE_APK,
+  '-I', ANDROID_JAR,
+  '--manifest', path.join(ANDROID, 'AndroidManifest.xml'),
+  '-A', WWW,
+  '-0', 'arsc',                                   // resources.arsc 不压缩（Android 11+ 硬要求）
+  '--java', GEN,
+  '--min-sdk-version', '21',
+  '--target-sdk-version', '34',
+  '--version-code', '1',
+  '--version-name', '1.0',
+  '--no-compile-sdk-metadata',
+  RES_ZIP,
+], 'aapt2 link');
+
+/* ---- 5b. 修正 assets 路径分隔符 ---- */
+step('5b', '修正 zip 内路径分隔符（aapt2 在 Windows 会写反斜杠）');
+run(process.execPath, [path.join(ANDROID, 'tools', 'zipadd.js'), 'slash', BASE_APK], 'zipadd slash');
+{
+  const listing = run(process.execPath,
+    [path.join(ANDROID, 'tools', 'zipadd.js'), 'list', BASE_APK], 'zipadd list');
+  const bad = listing.split('\n').filter((l) => l.includes('\\'));
+  if (bad.length) throw new Error('条目名仍含反斜杠，assets 会 404:\n' + bad.join('\n'));
+  console.log('[ok]   条目名全部使用正斜杠');
+}
+
+/* ---- 6. javac ---- */
+step(6, 'javac（编译 Java 源码 + R.java）');
+const SRC = path.join(ANDROID, 'src', 'com', 'ts', 'cityrun', 'MainActivity.java');
+const RJAVA = path.join(GEN, 'com', 'ts', 'cityrun', 'R.java');
+if (!fs.existsSync(RJAVA)) throw new Error('R.java 未生成: ' + RJAVA);
+run(JAVAC, [
+  '-encoding', 'UTF-8',
+  '-source', '8', '-target', '8',
+  '-Xlint:-options',
+  '-classpath', ANDROID_JAR,
+  '-d', CLASSES,
+  SRC, RJAVA,
+], 'javac MainActivity');
+
+/* ---- 7. d8 ---- */
+step(7, 'd8（class -> classes.dex）');
+const classFiles = [];
+(function walk(d) {
+  for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+    const p = path.join(d, e.name);
+    if (e.isDirectory()) walk(p);
+    else if (p.endsWith('.class')) classFiles.push(p);
+  }
+})(CLASSES);
+console.log(`       ${classFiles.length} 个 class`);
+fs.mkdirSync(DEX, { recursive: true });
+run(JAVA, [
+  '-cp', D8_JAR, 'com.android.tools.r8.D8',
+  '--lib', ANDROID_JAR,
+  '--min-api', '21',
+  '--release',
+  '--output', DEX,
+  ...classFiles,
+], 'd8');
+
+const DEX_FILE = path.join(DEX, 'classes.dex');
+if (!fs.existsSync(DEX_FILE)) throw new Error('classes.dex 未生成');
+console.log(`[ok]   classes.dex ${fs.statSync(DEX_FILE).size} B`);
+
+/* ---- 8. 追加 dex ---- */
+step(8, '把 classes.dex 追加进 APK');
+run(process.execPath, [path.join(ANDROID, 'tools', 'zipadd.js'), 'add', BASE_APK, 'classes.dex', DEX_FILE], 'zipadd');
+
+/* ---- 9. zipalign ---- */
+step(9, 'zipalign（4 字节对齐）');
+const ALIGNED = path.join(BUILD, 'aligned.apk');
+run(ZIPALIGN, ['-f', '-p', '4', BASE_APK, ALIGNED], 'zipalign');
+run(ZIPALIGN, ['-c', '-v', '4', ALIGNED], 'zipalign -c（对齐校验）');
+
+/* ---- 10. 签名密钥 ---- */
+step(10, '签名密钥');
+if (!fs.existsSync(KEYSTORE)) {
+  run(KEYTOOL, [
+    '-genkeypair', '-v',
+    '-keystore', KEYSTORE,
+    '-alias', KS_ALIAS,
+    '-keyalg', 'RSA', '-keysize', '2048',
+    '-validity', '10950',
+    '-storepass', KS_PASS,
+    '-keypass', KS_PASS,
+    '-dname', 'CN=CityRun, OU=Mobile, O=CityRun, C=CN',
+  ], 'keytool 生成 keystore');
+  console.log(`[ok]   keystore: ${KEYSTORE}`);
+} else {
+  console.log(`[ok]   复用已有 keystore: ${KEYSTORE}`);
+}
+
+/* ---- 11. apksigner ---- */
+step(11, 'apksigner（v1 + v2 签名）');
+run(JAVA, [
+  '-jar', SIGNER_JAR, 'sign',
+  '--ks', KEYSTORE,
+  '--ks-key-alias', KS_ALIAS,
+  '--ks-pass', 'pass:' + KS_PASS,
+  '--key-pass', 'pass:' + KS_PASS,
+  '--v1-signing-enabled', 'true',
+  '--v2-signing-enabled', 'true',
+  '--out', OUT_APK,
+  ALIGNED,
+], 'apksigner sign');
+
+/* ---- 12. 校验 ---- */
+step(12, '校验产物');
+// 关键：签名后必须仍然 4 字节对齐，否则 Android 11+ 会拒装
+run(ZIPALIGN, ['-c', '-v', '4', OUT_APK], 'zipalign -c（签名后）');
+const v = run(JAVA, ['-jar', SIGNER_JAR, 'verify', '--verbose', '--print-certs', OUT_APK], 'apksigner verify');
+run(AAPT2, ['dump', 'badging', OUT_APK], 'aapt2 dump badging');
+
+const size = fs.statSync(OUT_APK).size;
+console.log(`\n════════════════════════════════════════`);
+console.log(`  APK  : ${OUT_APK}`);
+console.log(`  大小 : ${(size / 1024 / 1024).toFixed(2)} MB (${size} bytes)`);
+console.log(`════════════════════════════════════════`);

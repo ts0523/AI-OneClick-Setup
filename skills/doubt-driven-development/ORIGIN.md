@@ -1,0 +1,27 @@
+# 来源与致谢
+
+| 项 | 内容 |
+| --- | --- |
+| **技能名** | `doubt-driven-development` |
+| **原作者** | Addy Osmani |
+| **原仓库** | https://github.com/addyosmani/agent-skills |
+| **原路径** | `skills/doubt-driven-development/` |
+| **许可** | MIT License, Copyright (c) 2025 Addy Osmani |
+
+## 作者是谁
+
+Google Chrome 团队工程负责人，《Learning JavaScript Design Patterns》作者、Web 性能领域长期布道者
+
+## 为什么收录
+
+- **许可明确**：MIT，可商用、可修改、可再分发 —— 这是收录的前提。
+- **内容干净**：纯 Markdown 方法论，不含任何第三方厂商素材或商标。
+- **补齐短板**：本库原有的 22 个技能偏「动手工具」，这批偏「工程纪律」，
+  两者互补而不重叠。
+
+## 使用须知
+
+1. **必须保留本文件。** MIT 协议要求保留原始版权声明，删掉就是违约。
+2. **正文未改动。** 收录时只新增了本文件，其余文件原样复制。
+3. **不会自动更新。** 上游有新版本时需自行取回。
+4. **上游仓库可能已下线。** 若链接失效，本文件里的署名信息仍作为署名依据保留。
