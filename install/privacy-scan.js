@@ -100,7 +100,7 @@ const TEXT_EXT = new Set(['.md', '.json', '.txt', '.js', '.cjs', '.mjs', '.ts', 
 // 扫它们只会让报告里全是自己写的噪声，反而掩盖真正该报的问题。
 const SKIP_DIRS = new Set([
   '.git', 'node_modules', '__pycache__', '.venv', 'venv', 'dist', 'build',
-  '.private',    // 含未成年人信息的内部评估
+  '.private',    // 内部评估文档，含个人身份信息，不外发
   '.workbuddy',  // AI 工具的项目级记忆
 ]);
 
