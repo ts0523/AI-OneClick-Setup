@@ -22,7 +22,7 @@ SOFTWARE.
 
 ---
 
-本仓库为「原创部分」采用 MIT 许可。
+本仓库的 MIT 许可覆盖「本项目编写与整理的部分」。
 
 ⚠️ 注意：仓库内的第三方技能（`skills/scholar-notes`、`skills/dynamic-archify`
 等）**不适用**本许可，它们各自遵循目录内的 LICENSE / ORIGIN.md，

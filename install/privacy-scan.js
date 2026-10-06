@@ -28,6 +28,25 @@ const pathArgIdx = args.indexOf('--path');
 const SCAN_ROOT = pathArgIdx >= 0 ? path.resolve(args[pathArgIdx + 1]) : ROOT;
 
 // ---------- 扫描规则 ----------
+
+// 保留域名与测试夹具：这些邮箱按RFC 2606 / 6761 就是「拿来当例子的」，
+// 不是任何真人的地址。第三方技能（尤其测试文件）里会大量出现，
+// 不排除的话高危计数会被几百条误报淹没，真正的泄露反而看不见。
+// 覆盖的写法：
+//   archify@example.test / fixture@example.com / x@example.invalid  （RFC 2606）
+//   SYNTHETIC_TOKEN@git.internal                （RFC 6761 保留 TLD）
+//   git@github.com / git@gitee.com                          （SSH 远端别名，非邮箱）
+const RESERVED_EMAIL = /@(?:example\.(?:com|org|net|test|invalid)|[a-z0-9-]+\.(?:test|invalid|example|internal|local)|localhost|git@|github\.com|gitee\.com|github\.local)$/i;
+
+function skipReservedEmail(hit) {
+  const h = String(hit);
+  // git@github.com 这类没有 @ 分隔的写法，正则抓的是 "git@github"
+  const m = h.match(/@([A-Za-z0-9.-]+)$/);
+  const host = m ? m[1] : h.replace(/^.*@/, '');
+  if (RESERVED_EMAIL.test('@' + host)) return true;
+  return false;
+}
+
 const RULES = [
   // 严重级：泄露即事故
   { level: 'CRITICAL', name: 'OpenRouter 密钥', re: /(sk-or-v1-)[A-Za-z0-9]{20,}/g },
@@ -39,7 +58,7 @@ const RULES = [
   { level: 'CRITICAL', name: '私钥文件', re: /-----BEGIN (RSA |OPENSSH |EC |DSA )?PRIVATE KEY-----/g },
 
   // 高危：个人身份
-  { level: 'HIGH', name: '邮箱地址', re: /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g },
+  { level: 'HIGH', name: '邮箱地址', re: /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g, skip: skipReservedEmail },
   { level: 'HIGH', name: '手机号（中国大陆）', re: /(?<!\d)1[3-9]\d{9}(?!\d)/g },
   { level: 'HIGH', name: '真实姓名', re: /(邱凤兰|田\s*硕)/g },
   { level: 'HIGH', name: '客户/商号名', re: /(和润生鲜|和润|吉水直聘|吉水)/g },
@@ -146,6 +165,8 @@ for (const f of files) {
       const m = lines[ln].match(rule.re);
       if (!m) continue;
       for (const hit of m) {
+        // 规则级白名单（如保留测试域名邮箱）
+        if (rule.skip && rule.skip(hit, lines[ln])) continue;
         findings.push({ level: rule.level, rule: rule.name, file: rel, line: ln + 1, sample: String(hit).slice(0, 60) });
       }
     }

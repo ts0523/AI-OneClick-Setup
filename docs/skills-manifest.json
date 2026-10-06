@@ -1,11 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "ai-oneclick-skills",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "updated": "2026-10-06",
   "total": 63,
   "summary": {
-    "original": 20,
+    "self-authored": 20,
     "third-party": 43,
     "totalKB": 40219,
     "bySource": {
@@ -13,9 +13,11 @@
       "obra/superpowers": 10,
       "UncleCheng-li/AI_Animation": 10,
       "Cocoon-AI/architecture-diagram-generator": 1
-    }
+    },
+    "selfAuthored": "ts0523",
+    "note": "本仓库为组合式项目：技能来自 4 个开源作者的贡献（已逐个署名），另有 20 个技能与全部脚本、教程、配置模板由本项目编写与整理。"
   },
-  "notice": "third-party 技能全部为 MIT 许可，各目录下的 ORIGIN.md 记录了作者与来源。",
+  "notice": "third-party 技能遵循各自的原始许可（均为 MIT），各目录下的 ORIGIN.md 记录了作者与来源；嵌套在 swiss-shot-demos 内的 archify 素材按其 THIRD_PARTY_NOTICES.md 列出的条款使用。",
   "notIncluded": {
     "reason": "许可不明确或明确禁止再分发，详见 CREDITS.md",
     "skills": [],
@@ -26,25 +28,29 @@
       "name": "agnes-image-gen",
       "description": "| 用 Agnes AI 的图像模型生成图片（文生图 / 图生图）。当用户要求「生成图片、 画一张图、配图、做海报、生成插画、把这张图改成…」且希望走 Agnes 通道时使用。 支持 agnes-image-2.5-flash（默认）/ 2.1-flash / 2.0-flash，当前全部免费。 调用的是 apihub.agnes-ai.com/v1 的 OpenAI 兼容接口。",
       "kb": 5,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "agnes-video-gen",
       "description": "| 用 Agnes AI 的视频模型生成视频（文生视频 / 首尾帧控制 / 图片参考）。 当用户要求「生成视频、做一段短视频、把这个图片变成视频、AI 视频」且希望走 Agnes 通道时使用。默认 agnes-video-2.5-flash（限时免费），备选 agnes-video-v2.0（当前免费）。任务是异步的：创建 → 轮询 → 下载 mp4。",
       "kb": 8,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "android-apk-no-gradle",
       "description": "在没有 Android Studio / Gradle 的 Windows 机器上，从零搭出 JDK + Android SDK 编译链，并用 aapt2 + javac + d8 + zipalign + apksigner 手工产出一个已签名、可安装的 APK。也包含「把已有 HTML/设计稿包成 WebView 原生 App」的完整做法。当用户要求「生成 apk」「打包安卓应用」「把网页做成安卓 App」「装到手机上」，或需要在无网络/弱网络的国内环境下载 Android SDK 时使用。",
       "kb": 8,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "android-webview-apk",
       "description": "在没有 Gradle、没有 Android Studio 的 Windows 机器上，把一套 HTML/CSS/JS 界面（设计稿还原页、单页 WebView 应用、小游戏）打成可直接安装的签名 APK。涵盖工具链获取（JDK + build-tools + platform）、aapt2→javac→d8→zipalign→apksigner 全手工流水线、Java2D 生成多密度启动图标、自适应图标、WebView 壳 Activity，以及三个必踩的坑（aapt2 在 Windows 写反斜杠导致 assets 404、resources.arsc 必须未压缩+对齐、dex 必须在...",
       "kb": 36,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "api-and-interface-design",
@@ -59,7 +65,8 @@
       "name": "app-listing-kit",
       "description": "把本地做好的应用/游戏/软件/小工具，一键生成一整套可直接粘贴上架电商平台的物料包（淘宝 + 拼多多），含标题多候选、卖点、详情页 HTML、SKU 与价格梯度、主图文案脚本、自动发货话术、上架操作 checklist，并做违禁词/极限词/IP 风险词扫描与开店资质闸门校验。当用户说「一键上架」「放到淘宝卖」「拼多多上架」「应用售卖」「把游戏挂到电商」「生成商品详情页」「写商品标题」「卖我的软件」时使用。本 skill 只生成物料与校验，不代登录、不代提交、不操控任何平台后台。",
       "kb": 64,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "brainstorming",
@@ -74,7 +81,8 @@
       "name": "bundle-string-patch",
       "description": "安全地修改压缩后的 JS bundle 里的界面文案（汉化/改词），用于 Cursor、VS Code、Electron 等把代码编译进单个大 JS 文件的程序。当用户要求\"汉化 XX 软件界面\"\"改 XX 的按钮文字\"\"把 XX 界面改成中文\"且目标不是扩展而是产品本体时使用。已解决：全局字符串替换导致白屏（Agent 出现 12540 次是变量名不是文案）、正则多捕获组错位生成坏代码、node --check 对大文件给假警报、占位符 {x} 与 ${} 混淆。",
       "kb": 9,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "card-theater",
@@ -107,13 +115,15 @@
       "name": "codex-api-deploy",
       "description": "把一个 API key 自动接入 Codex（桌面 App / CLI）。当需要「把 key 接进 codex」「codex 换 API / 换中转站」「codex 报 401、503、model_not_found 想换通道」「只给一个 key 就让 codex 能用」「给 codex 配 base_url / model」「切换 codex 的多个渠道」「codex 模型选择器里看不到模型 / 只有一两个模型」时使用。自动完成候选地址探测、协议探测（responses/chat）、模型逐个实测、配置备份改写、App 模型目录同步、真实 CLI 实测与回滚。",
       "kb": 105,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "codex-config-repair",
       "description": "修复 Codex 桌面 App / CLI 因版本升级或第三方启动器改写 config.toml 导致的故障。当出现「Codex 打不开」「codex 启动报错」「API 用不了」「model_not_found」「Error loading config.toml」「wire_api is no longer supported」等现象时使用。",
       "kb": 13,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "constraint-driven-development",
@@ -218,7 +228,8 @@
       "name": "gh-cli-setup",
       "description": "| 配置 GitHub CLI（gh）与 git：非交互登录（设备码 / PAT）、设置提交身份、 配置凭据助手、验证搜索与克隆能力、排查「搜索返回空」等假故障。 当用户说「配置 GitHub」「登录 gh」「gh 怎么用」「连不上 GitHub」 「gh search 搜不到东西」「git 提交身份」时使用。",
       "kb": 4,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "git-workflow-and-versioning",
@@ -233,7 +244,8 @@
       "name": "headless-ui-verify",
       "description": "100% 静默的无头界面验证管线（Web 优先，原生/游戏走适配器）。截图确认 UI/画面效果、跑 DOM 体检与像素比对，全程不创建可见窗口、不抢焦点、不出声、不弹通知、不写用户个人目录、不留残留进程。当用户说「截图看看效果」「验证下界面」「无头验证」「跑一遍 UI 体检」「静默验证」「别打扰我地验证」「改完 UI 检查一下」时使用。",
       "kb": 27,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "idea-refine",
@@ -266,7 +278,8 @@
       "name": "lmstudio-load-failure-triage",
       "description": "诊断 LM Studio / llama.cpp 本地模型加载失败（llama-server 退出、exitCode 3221226505 / 0xC0000409、failed to allocate buffer for kv cache、cannot run the operation）的实证流程。用真实 llama-server.exe 跑参数矩阵定位触发条件，抓子进程命令行读出 LM Studio 实际下发的参数，解析 GGUF 头算 KV 内存账，不靠界面反复试错。也包含 LM Studio 1.x(Bionic) 界面里「上下文长度 / KV 缓存量化 / Flash 注意...",
       "kb": 24,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "network-protocol-viz",
@@ -326,13 +339,15 @@
       "name": "project-zh-localizer",
       "description": "项目一键多语本地化工具链，**五语（zh-CN / en / ja / ko / fr）任意双向互译**。抓取 HTML/JS/TS/Vue/Svelte/JSON/PO/properties/ARB/Android XML/YAML/CSV/Markdown 及 py/java/cs/go/rs/php 源码中的用户可见文案，提供 a/b/c/d 四档翻译精准度（a=词典直译，b=AI 逐批翻译，c=批量程序校验，d=AI 抽样复核），并支持**单机离线模式**（内置五语词典 + 规则，零网络零 AI）、**Web 专项审计**（i18n 框架识别、<html lang> 同步、can...",
       "kb": 276,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "promo-kit",
       "description": "把本地做好的项目（游戏/软件/工具/网站）一键变成整套对外推广物料：宣传图、宣传视频、多渠道文案、落地页 HTML、以及带完整推导过程的定价方案，并按渠道算法做差异化。宣传视频与图片中的画面直接从项目本体录制/截取再剪辑，保证与实物一致。当用户说「帮我做宣传」「给项目做推广」「生成宣传图」「做宣传视频」「录制演示视频」「写推广文案」「怎么定价」「定多少钱合适」「做张海报」「做落地页」「东西做好了没人买」「怎么卖出去」「推广我的作品」时使用。产出物全部遵守广告法与平台规则：不编销量、不造虚假稀缺、不蹭第三方 IP。本 skill 只做物料，不代发帖、不代收款、不操作任何平台后台。",
       "kb": 283,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "receiving-code-review",
@@ -356,7 +371,8 @@
       "name": "sandbox-safe-file-ops",
       "description": "| 在安全策略受限的 Windows 沙箱里安全地整理文件：清理空目录、合并重复目录、 给目录建符号链接代替快捷方式、把删除操作换成移到隔离区。当用户说 「清理空文件夹」「合并重复目录」「桌面建个快捷方式」「这些不要了但先别删」 「做个可回退的清理」时使用。已验证可绕开 COM / 回收站 API / cmd.exe 全被拦的限制。",
       "kb": 5,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "scholar-notes",
@@ -452,7 +468,8 @@
       "name": "tls-mitm-downloader",
       "description": "| 在有 TLS 中间人代理的网络里把文件可靠下载到本地（GitHub Release / cdn 直链）， 自动跟随重定向、流式落盘、SHA256 校验、失败重试。当用户说「下载 xxx」 「GitHub 下不下来」「curl 报证书错误」「unable to verify the first certificate」 「CRYPT_E_NO_REVOCATION_CHECK」时使用。",
       "kb": 4,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "using-git-worktrees",
@@ -485,13 +502,15 @@
       "name": "vscode-activitybar-icon",
       "description": "做 VS Code 扩展的活动栏图标（viewsContainers.activitybar 的 icon）时，避免「扩展装了、容器也注册了，但活动栏看不见图标」。已解决：stroke 描边图标被 mask 吃掉、icon 路径写错、只画了描边没画填充、自检用字符串匹配抓不到。",
       "kb": 4,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "vscode-webview-verify",
       "description": "无头验证 VS Code 扩展 webview 的界面与交互，产出截图与断言结果。当需要「截图看看 webview 长什么样」「验证扩展的 webview 能不能跑」「webview 点了没反应怎么排查」「给扩展写无头测试」时使用。已解决：webview 不能直接开、CSS 要内联、__STATE__ 会被覆盖、script 段污染正则、Edge EBUSY、id 缺失导致全盘失效。",
       "kb": 11,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "win11-ui-demos",
@@ -506,19 +525,22 @@
       "name": "windows-bat-launcher",
       "description": "写 Windows .bat 启动器/安装脚本时避开 cmd 的 quoting、start、CRLF 三大坑，并给出能静态验证的自检项。当需要「做个一键启动脚本」「双击 .bat 报错找不到文件」「.bat 里路径带空格出问题」「bat 里带空格的命令行被截断」时使用。已解决：找不到 \\Code.exe（变量空 + Code.exe 不认 CLI 参数）、start 吃掉引号、裸 LF 导致整文件当一行、start \"标题\" 参数被误当命令、set /a 立即展开。",
       "kb": 10,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "workbuddy-sandbox-constraints",
       "description": "| WorkBuddy 受限 Windows 沙箱的环境硬限制清单：被禁的 API、被拦的命令、 stdout 不回传的绕法、绝对路径要求。当 AI 工具调用报「Command blocked for security」 「stdout 无输出」「command not found」「EPERM」，或任何操作本机 PowerShell / Bash 工具失败时，先查这里，不要逐个试错。",
       "kb": 3,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "workbuddy-spill-enoent",
       "description": "修复 WorkBuddy 报 ENOENT: acc-product-config-v3.json.N.tmp / workbuddy-conversation-product-XXXX 找不到。当 WorkBuddy 日常办公中弹「=== Error Report ===」且路径在 %TEMP% 下时用本 skill。已定位为产品缺陷：spill 目录建在 %TEMP% 且路径被永久缓存、只在进程 exit 清理，被系统清理后不会重建。",
       "kb": 5,
-      "origin": "original"
+      "origin": "self-authored",
+      "author": "ts0523"
     },
     {
       "name": "writing-plans",

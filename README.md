@@ -145,7 +145,7 @@ powershell -ExecutionPolicy Bypass -File .\setup.ps1 -AddToPath
 你现在有哪些技能？技能库在哪？
 ```
 
-- 答得出 29 个、路径指向你的技能库 → **成功**。
+- 答得出 63 个、路径指向你的技能库 → **成功**。
 - 说找不到技能 → 检查符号链接是否建成（`install/03-setup-agents.ps1` 会逐个打印链接状态）。
 - Windows 10/11 建符号链接需要**开发者模式**或管理员权限；  
   脚本会自动退回成「真实复制」，但那样各家的版本会分叉，需手动同步。
@@ -166,7 +166,7 @@ powershell -ExecutionPolicy Bypass -File .\setup.ps1 -AddToPath
 AI一键配置/
 ├── install.bat                  ← 双击这个
 ├── setup.ps1                    ← 主程序
-├── LICENSE                      MIT（仅覆盖原创部分）
+├── LICENSE                      MIT（仅覆盖本项目编写的部分）
 ├── CREDITS.md                   ← 第三方署名与致谢 ★
 │
 ├── install/                     一键脚本
@@ -310,16 +310,17 @@ node install/privacy-scan.js --fix    # 扫描并自动脱敏
 | 腾讯官方技能（20 个） | `cloud-service` 的 frontmatter 明确写 `license: Internal`（仅限内部、不可再分发），<br>另外 19 个既无 license 也无 LICENSE 文件|
 | Cursor 官方技能（7 个） | 全部无任何 license 声明。**本仓库早期版本曾收录，已全部移除** ——<br>「本地能用」≠「可再分发」 |
 | `browser-skill` | 腾讯官方产品的一部分，版权归腾讯所有 |
-| `video-shot-demos` | 素材含多家厂商产品名与商标形象，且体积达74 MB |
+| `ui2v-motions` | UncleCheng-li 的技能，体积约 621 MB（其中 9479 个文件是打包进来的第三方动效库），体积与收录价值不成比例 |
 
-> 判断标准很简单：**出现一个作品名/技能，是「用它」还是「禁止用它」是另一回事；
-> 但把没有明确授权的文件打包进开源仓库发布，是明确违规。**
+> 判断标准很简单：**能不能合法转载**是关键 ——
+> 明确允许再分发的（MIT / Apache / BSD 等）都可以收；
+> 没声明或写明「仅限内部」的才排除。
 
 ---
 
 ## 八、许可
 
-- 原创部分：**MIT**（见 `LICENSE`）
+- 本项目编写的部分：**MIT**（见 `LICENSE`）
 - 第三方技能：**各自遵循其原始许可**（见各目录下的 `LICENSE` / `ORIGIN.md`）
 
 ---

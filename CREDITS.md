@@ -5,7 +5,7 @@
 工具链安装经验组装成一套可以直接双击安装的方案。
 
 > **技能来自各个开源作者的贡献，署名逐个列清。**
-> 一键配置脚本、Git 教程、工具链说明、隐私扫描器是本项目原创。
+> 一键配置脚本、Git 教程、工具链说明、隐私扫描器由本项目编写。
 > 下表列清每一部分的来源与许可 —— 这是我们做这个仓库的底线：
 > **别人的东西，一定署名。**
 
@@ -16,9 +16,9 @@
 | 项 | 数量 | 说明 |
 | --- | --- | --- |
 | 收录技能总数 | **63** | 全部在 `skills/`，扁平结构 |
-| ├ 本项目原创 | 20 | frontmatter 标 `agent_created: true` |
-| └ 第三方 MIT 收录 | 43 | 分属 4 个开源项目，逐个署名 |
-| 原创文档与脚本 | 6 | `README.md` / `CREDITS.md` / 教程 / 脚本 / 扫描器 |
+| ├ 本项目编写 | 20 | frontmatter 标 `agent_created: true` |
+| └ 第三方收录 | 43 | 分属 4 个开源项目，逐个署名 |
+| 本项目文档与脚本 | 6 | `README.md` / `CREDITS.md` / 教程 / 脚本 / 扫描器 |
 | 仓库体积 | 约 12 MB | 不含二进制安装包 |
 
 **四个上游来源：**
@@ -47,9 +47,9 @@
 >
 > `swiss-shot-demos` 内含两个嵌套技能包（`archify`、`diagram-design`），
 > **它们有各自的独立版权**（`archify` 属 **tt-a1i**），已按原样保留并各自带 `LICENSE`。
-> ⚠️ **注意**：`archify/THIRD_PARTY_NOTICES.md` 记录它引用了 CC-BY-SA与 **CC-BY-NC-SA**
-> 的第三方商标素材（Jenkins、Vue.js等）。**该目录不适用于直接商用**，
-> 商用前请先移除对应素材。详见该技能目录的 `ORIGIN.md`。
+> ⚠️ **注意**：`archify/THIRD_PARTY_NOTICES.md` 记录它引用了 CC-BY-SA 与 **CC-BY-NC-SA**
+> 的第三方商标素材（Jenkins、Vue.js 等）。这些素材按各自许可条款使用，**请照该文件执行**
+> （署名要求、非商业限制等）。详见该技能目录的 `ORIGIN.md`。
 >
 > 另有 1 个技能 `test-driven-development` 来自 superpowers 库但**未收录**，
 > 因为 Addy Osmani 的同名版本内容更完整，只收录了后者。原因写在该目录的 `ORIGIN.md` 里。
@@ -129,18 +129,18 @@
 | `dynamic-archify` | **tt-a1i** 重写<br>**Cocoon AI** 原始 | [Cocoon-AI/architecture-diagram-generator](https://github.com/Cocoon-AI/architecture-diagram-generator) | 原文收录，保留 `LICENSE` 中**两行**版权声明 |
 
 > **UncleCheng-li 就是 ts 所说的「网络小白」。** 他是本仓库收录技能最多的独立作者
-> （9 个），主仓库 [AI_Animation](https://github.com/UncleCheng-li/AI_Animation) 有 1.4k star。
+> （10 个），主仓库 [AI_Animation](https://github.com/UncleCheng-li/AI_Animation) 有 1.4k star。
 
 ---
 
-## 三、本项目原创部分
+## 三、本项目编写与整理的部分
 
-以下内容原创，作者 **[ts0523](https://github.com/ts0523)**：
+以下内容由本项目编写与整理，作者 **[ts0523](https://github.com/ts0523)**：
 
 **脚本与工具**
 
 - 一键配置脚本：`install.bat`、`setup.ps1`、`install/02-install-tools.ps1`、`install/03-setup-agents.ps1`
-- 隐私与合规扫描器：`install/privacy-scan.js`（原创设计：递归遍历而非通配符 + 多层转义覆盖）
+- 隐私与合规扫描器：`install/privacy-scan.js`（设计要点：递归遍历而非通配符 + 多层转义覆盖）
 
 **文档**
 
@@ -154,7 +154,7 @@
 
 - 五家 AI 工具（WorkBuddy / Cursor / Claude Code / VS Code / Cursor BYOK）的配置模板
 
-**自研技能（20 个）**
+**本项目编写的技能（20 个）**
 
 `android-apk-no-gradle`、`android-webview-apk`、`app-listing-kit`、`bundle-string-patch`、
 `codex-api-deploy`、`codex-config-repair`、`gh-cli-setup`、`headless-ui-verify`、
@@ -189,14 +189,14 @@
 
 | 技能 | 原因 |
 | --- | --- |
-| `card-theater`、`flowchart`、`ppt-animation`、`phone-ui-demos`、<br>`win11-ui-demos`、`stacked-data-cards`、`network-protocol-viz` | 这7 个技能**没有任何 license 声明，也没有 LICENSE 文件**。<br>本仓库早期版本曾收录，后经核查**已全部移除**。<br><br>理由：无 license 声明 ≠ 可自由再分发。「装在本地能用」和「打包进开源仓库发布」是两件不同的事，<br>后者属于再分发，需要明确授权。 |
+| Cursor 官方版`card-theater`、`flowchart`、`ppt-animation`、`phone-ui-demos`、<br>`win11-ui-demos`、`stacked-data-cards`、`network-protocol-viz` | 这 7 个技能**没有任何 license 声明，也没有 LICENSE 文件**。<br>本仓库早期版本曾收录，后经核查**已全部移除**。<br><br>理由：无 license 声明 ≠ 可自由再分发。「装在本地能用」和「打包进开源仓库发布」是两件不同的事，<br>后者属于再分发，需要明确授权。<br><br>⚠️ **注意别混淆**：本仓库现在有**同名**的 7 个技能，但它们来自<br>**UncleCheng-li/AI_Animation**（MIT，已署名），与Cursor 官方版是两个不同的东西。 |
 
 ### 4.3 其他
 
 | 技能 | 原因 |
 | --- | --- |
 | `browser-skill` | 来自**腾讯**官方产品（[Tencent/BrowserSkill](https://github.com/Tencent/BrowserSkill)），版权归腾讯所有，随产品分发 |
-| `video-shot-demos` | 素材含多家厂商产品名与商标形象，且体积达 74 MB。商标与版权风险，本仓库不收录 |
+| `ui2v-motions`（UncleCheng-li） | 体积约 621 MB，其中 9479 个文件集中在 `01_动效库/itelmn/` 一个目录（打包进来的第三方动效库），体积与收录价值不成比例 |
 | 某浏览器产品示例资源目录 | 含第三方产品 logo 与 GIF（78 文件 / 52.7 MB），已整目录删除 |
 
 ---
@@ -209,7 +209,9 @@
 1. **每一个第三方技能都保留 `ORIGIN.md`**，写清作者、仓库、许可。
 2. **MIT 协议要求保留版权声明**，删掉就是违约，所以 `ORIGIN.md` 不可删除。
 3. **不收录许可不清的**。哪怕技术上能拿到，也不放进仓库。
-4. **本仓库的 MIT 许可只覆盖原创部分**，不覆盖第三方技能 ——
+   （判定标准是「能不能合法转载」——MIT / Apache / BSD 等明确允许再分发的都可以；
+   只有限制再分发或用途的才排除。）
+4. **本仓库的 MIT 许可只覆盖本项目编写的部分**，不覆盖第三方技能 ——
    第三方技能一律遵循其原始许可。
 
 ---
@@ -218,7 +220,7 @@
 
 | 范围 | 许可 |
 | --- | --- |
-| 本项目原创脚本与文档 | **MIT License**（见根目录 `LICENSE`） |
+| 本项目编写的脚本与文档 | **MIT License**（见根目录 `LICENSE`） |
 | 第三方技能（43 个） | 各自遵循其原始许可，**全部为 MIT**，详见各目录的 `ORIGIN.md` |
 | 商标 / 商标性内容 | 无。仓库不含任何第三方厂商素材 |
 
