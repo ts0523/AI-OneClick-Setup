@@ -9,9 +9,9 @@
 | --- | --- |
 | **技能名** | 学霸笔记（收录时改名为 `scholar-notes`） |
 | **原作者** | **UncleCheng-li** |
-| **原仓库** | https://github.com/UncleCheng-li/note-skill |
-| **同作者另一个仓库** | https://github.com/UncleCheng-li/AI_Animation（`skills/scholar-notes`） |
-| **原目录名** | `note-skill/` |
+| **原仓库** | https://github.com/UncleCheng-li/AI_Animation |
+| **原路径** | `skills/scholar-notes/` |
+| **同作者的独立仓库** | https://github.com/UncleCheng-li/note-skill（同一作品的单技能版本） |
 | **许可** | MIT License, Copyright (c) 2026 UncleCheng（见本目录 `LICENSE`） |
 | **收录方式** | 按 MIT 条款使用，保留原 `LICENSE` 与全部版权声明 |
 
@@ -21,7 +21,7 @@
 
 | # | 改动 | 为什么| 是否碰过正文 |
 | --- | --- | --- | --- |
-| 1 | 目录名 `note-skill/` → `scholar-notes/` | 与本仓库的技能命名规范统一 | 否 |
+| 1 | 目录名 `scholar-notes/` 保持不变，改为补齐 frontmatter 使其能独立加载 | 与本仓库其他技能的元数据格式对齐 | 否 |
 | 2 | frontmatter 里 `trigger_words:` → `triggers:`、`name`/`description` 加引号、补`version` | 与本仓库其他技能的元数据格式对齐 | 否 |
 | 3 | `README.md` 里的安装路径改为通用「技能库」目录、`git clone` 改为 `npx skills add` | 原路径写死了作者的 `~/.workbuddy/skills/`，换机器就失效 | 仅README |
 
@@ -53,7 +53,7 @@
 
 感谢 **UncleCheng-li** 公开了这个作品，本项目才得以收录使用。
 如果你觉得这个技能好用，欢迎去原仓库点个 Star：
-<https://github.com/UncleCheng-li/note-skill>
+<https://github.com/UncleCheng-li/AI_Animation>
 
 ---
 *本文件（`ORIGIN.md`）由整理者在收录时添加，用于署名与溯源，不修改原作者的任何内容。*

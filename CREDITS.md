@@ -27,7 +27,7 @@
 | --- | --- | --- | --- | --- |
 | 1 | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | **Addy Osmani**（Google Chrome 团队工程负责人） | 22 | MIT |
 | 2 | [obra/superpowers](https://github.com/obra/superpowers) | **Jesse Vincent** | 10 | MIT |
-| 3 | [UncleCheng-li/note-skill](https://github.com/UncleCheng-li/note-skill) | **UncleCheng-li** | 1 | MIT |
+| 3 | [UncleCheng-li/AI_Animation](https://github.com/UncleCheng-li/AI_Animation) → 本仓库改名为 `scholar-notes` | **UncleCheng-li** | 1 | MIT |
 | 4 | [Cocoon-AI/architecture-diagram-generator](https://github.com/Cocoon-AI/architecture-diagram-generator) → 本仓库改名为 `dynamic-archify` | **tt-a1i**（重写）/ **Cocoon AI**（原始） | 1 | MIT |
 | | | | **小计 34** | |
 
@@ -96,7 +96,7 @@
 
 | 技能 | 作者 | 来源仓库 | 处理方式 |
 | --- | --- | --- | --- |
-| `scholar-notes`（学霸笔记） | **UncleCheng-li** | [UncleCheng-li/note-skill](https://github.com/UncleCheng-li/note-skill) | 原文收录。仅改目录名（`note-skill` → `scholar-notes`）与 frontmatter 键位，正文未改，保留原 `LICENSE`（MIT, Copyright (c) 2026 UncleCheng） |
+| `scholar-notes`（学霸笔记） | **UncleCheng-li** | [UncleCheng-li/AI_Animation](https://github.com/UncleCheng-li/AI_Animation)（`skills/scholar-notes`） | 原文收录。仅改frontmatter 键位与 README 安装路径，正文未改，保留原 `LICENSE`（MIT, Copyright (c) 2026 UncleCheng） |
 | `dynamic-archify` | **tt-a1i** 重写<br>**Cocoon AI** 原始 | [Cocoon-AI/architecture-diagram-generator](https://github.com/Cocoon-AI/architecture-diagram-generator) | 原文收录，保留 `LICENSE` 中**两行**版权声明 |
 
 ---
@@ -215,7 +215,7 @@
 
 - **Addy Osmani** —— 22 个工程纪律技能
 - **Jesse Vincent** —— 10 个 superpowers 技能
-- **UncleCheng-li** —— scholar-notes（学霸笔记），来源 [UncleCheng-li/note-skill](https://github.com/UncleCheng-li/note-skill)
+- **UncleCheng-li** —— scholar-notes（学霸笔记），来源 [UncleCheng-li/AI_Animation](https://github.com/UncleCheng-li/AI_Animation)
 - **tt-a1i / Cocoon AI** —— dynamic-archify
 - 所有在 GitHub 上开源并允许再分发的技能作者
 

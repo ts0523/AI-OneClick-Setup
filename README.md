@@ -297,7 +297,7 @@ node install/privacy-scan.js --fix    # 扫描并自动脱敏
 | --- | --- | --- | --- |
 | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | **Addy Osmani**（Google Chrome 团队） | 22 | MIT |
 | [obra/superpowers](https://github.com/obra/superpowers) | **Jesse Vincent** | 10 | MIT |
-| [UncleCheng-li/note-skill](https://github.com/UncleCheng-li/note-skill) | **UncleCheng-li** | 1 | MIT |
+| [UncleCheng-li/AI_Animation](https://github.com/UncleCheng-li/AI_Animation) | **UncleCheng-li** | 1 | MIT |
 | architecture-diagram-generator | **tt-a1i** / **Cocoon AI** | 1 | MIT |
 
 每个第三方技能目录下都有 **`ORIGIN.md`**，写明来源、作者、许可与使用须知。

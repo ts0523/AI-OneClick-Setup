@@ -12,7 +12,7 @@
       "addyosmani/agent-skills": 22,
       "obra/superpowers": 10,
       "Cocoon-AI/architecture-diagram-generator": 1,
-      "UncleCheng-li/note-skill": 1
+      "UncleCheng-li/AI_Animation": 1
     }
   },
   "notice": "third-party 技能全部为 MIT 许可，各目录下的 ORIGIN.md 记录了作者与来源。",
@@ -362,7 +362,7 @@
       "description": "\"生成手写笔记本风格的单文件 HTML 学习笔记。当用户需要将技术内容、漏洞分析、知识总结等转化为视觉精美的网页笔记时使用。\"",
       "kb": 322,
       "origin": "third-party",
-      "from": "UncleCheng-li/note-skill",
+      "from": "UncleCheng-li/AI_Animation",
       "author": "UncleCheng-li",
       "license": "MIT License, Copyright (c) 2026 UncleCheng"
     },
