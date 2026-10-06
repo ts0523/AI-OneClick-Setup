@@ -15,11 +15,11 @@
 
 | 项 | 数量 | 说明 |
 | --- | --- | --- |
-| 收录技能总数 | **54** | 全部在 `skills/`，扁平结构 |
+| 收录技能总数 | **62** | 全部在 `skills/`，扁平结构 |
 | ├ 本项目原创 | 20 | frontmatter 标 `agent_created: true` |
-| └ 第三方 MIT 收录 | 34 | 分属 4 个开源项目，逐个署名 |
+| └ 第三方 MIT 收录 | 42 | 分属 4 个开源项目，逐个署名 |
 | 原创文档与脚本 | 6 | `README.md` / `CREDITS.md` / 教程 / 脚本 / 扫描器 |
-| 仓库体积 | 约 3.4 MB | 不含二进制安装包 |
+| 仓库体积 | 约 12 MB | 不含二进制安装包 |
 
 **四个上游来源：**
 
@@ -27,10 +27,18 @@
 | --- | --- | --- | --- | --- |
 | 1 | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | **Addy Osmani**（Google Chrome 团队工程负责人） | 22 | MIT |
 | 2 | [obra/superpowers](https://github.com/obra/superpowers) | **Jesse Vincent** | 10 | MIT |
-| 3 | [UncleCheng-li/AI_Animation](https://github.com/UncleCheng-li/AI_Animation) → 本仓库改名为 `scholar-notes` | **UncleCheng-li** | 1 | MIT |
+| 3 | [UncleCheng-li/AI_Animation](https://github.com/UncleCheng-li/AI_Animation)（1.4k star） | **UncleCheng-li** | 9 | MIT |
 | 4 | [Cocoon-AI/architecture-diagram-generator](https://github.com/Cocoon-AI/architecture-diagram-generator) → 本仓库改名为 `dynamic-archify` | **tt-a1i**（重写）/ **Cocoon AI**（原始） | 1 | MIT |
-| | | | **小计 34** | |
+| | | | **小计 42** | |
 
+> **UncleCheng-li/AI_Animation 收录了 9 个**：`scholar-notes`（学霸笔记）、`card-theater`（卡片剧场）、
+> `flowchart`（流程图）、`network-protocol-viz`（网络协议可视化）、`phone-ui-demos`（手机 UI 演示）、
+> `ppt-animation`（PPT 翻页）、`stacked-data-cards`（叠放数据卡）、`video-shot-demos`（分镜演示）、
+> `win11-ui-demos`（仿 Win11 演示）。
+> 其中 `win11-ui-demos` 与 `video-shot-demos` 的示例素材（`assets/examples/`，约 100 MB GIF）
+> **未入库** —— 技能本体（`SKILL.md` / `references/` / `template.html`）完整收录，可正常加载，
+> 需要看效果请去上游仓库。
+>
 > 另有 1 个技能 `test-driven-development` 来自 superpowers 库但**未收录**，
 > 因为 Addy Osmani 的同名版本内容更完整，只收录了后者。原因写在该目录的 `ORIGIN.md` 里。
 
@@ -38,7 +46,7 @@
 
 - **`ORIGIN.md`** —— 写明作者、仓库地址、原路径、许可条款、改了什么、使用须知。
 - **`LICENSE`** —— 上游的 MIT 许可全文原文，**一个字都没改**。
-  MIT 协议要求「所有副本都包含版权声明」，所以这34 个目录一个都不能少。
+  MIT 协议要求「所有副本都包含版权声明」，所以这 42 个目录一个都不能少。
 
 ---
 
@@ -92,12 +100,23 @@
 | `verification-before-completion` | 声称「完成」前必须验证 |
 | `writing-plans` | 写实现计划 |
 
-### 来自其他开源项目（2 个）
+### 来自其他开源项目（10 个）
 
 | 技能 | 作者 | 来源仓库 | 处理方式 |
 | --- | --- | --- | --- |
 | `scholar-notes`（学霸笔记） | **UncleCheng-li** | [UncleCheng-li/AI_Animation](https://github.com/UncleCheng-li/AI_Animation)（`skills/scholar-notes`） | 原文收录。仅改frontmatter 键位与 README 安装路径，正文未改，保留原 `LICENSE`（MIT, Copyright (c) 2026 UncleCheng） |
+| `card-theater`（卡片剧场） | **UncleCheng-li** | 同上（`skills/card-theater`） | 原文收录，SKILL.md 与上游 blob SHA 归一化后逐字节一致 |
+| `flowchart`（流程图动画） | **UncleCheng-li** | 同上（`skills/flowchart`） | 同上 |
+| `network-protocol-viz`（网络协议可视化） | **UncleCheng-li** | 同上（`skills/network-protocol-viz`） | 同上 |
+| `phone-ui-demos`（手机 UI 演示） | **UncleCheng-li** | 同上（`skills/phone-ui-demos`） | 同上 |
+| `ppt-animation`（PPT 翻页演示） | **UncleCheng-li** | 同上（`skills/ppt-animation`） | 同上 |
+| `stacked-data-cards`（叠放数据卡） | **UncleCheng-li** | 同上（`skills/stacked-data-cards`） | 同上 |
+| `video-shot-demos`（分镜演示） | **UncleCheng-li** | 同上（`skills/video-shot-demos`） | 技能本体完整收录；`assets/examples/`（约 49 MB）未入库 |
+| `win11-ui-demos`（仿 Win11 演示） | **UncleCheng-li** | 同上（`skills/win11-ui-demos`） | 技能本体完整收录；`assets/examples/`（约 51 MB）未入库 |
 | `dynamic-archify` | **tt-a1i** 重写<br>**Cocoon AI** 原始 | [Cocoon-AI/architecture-diagram-generator](https://github.com/Cocoon-AI/architecture-diagram-generator) | 原文收录，保留 `LICENSE` 中**两行**版权声明 |
+
+> **UncleCheng-li 就是 ts 所说的「网络小白」。** 他是本仓库收录技能最多的独立作者
+> （9 个），主仓库 [AI_Animation](https://github.com/UncleCheng-li/AI_Animation) 有 1.4k star。
 
 ---
 
@@ -187,7 +206,7 @@
 | 范围 | 许可 |
 | --- | --- |
 | 本项目原创脚本与文档 | **MIT License**（见根目录 `LICENSE`） |
-| 第三方技能（34 个） | 各自遵循其原始许可，**全部为 MIT**，详见各目录的 `ORIGIN.md` |
+| 第三方技能（42 个） | 各自遵循其原始许可，**全部为 MIT**，详见各目录的 `ORIGIN.md` |
 | 商标 / 商标性内容 | 无。仓库不含任何第三方厂商素材 |
 
 第三方技能不受本项目 MIT 许可约束，使用前请先读对应目录的 `ORIGIN.md`。
@@ -215,7 +234,7 @@
 
 - **Addy Osmani** —— 22 个工程纪律技能
 - **Jesse Vincent** —— 10 个 superpowers 技能
-- **UncleCheng-li** —— scholar-notes（学霸笔记），来源 [UncleCheng-li/AI_Animation](https://github.com/UncleCheng-li/AI_Animation)
+- **UncleCheng-li** —— 9 个演示动画技能（含 scholar-notes），来源 [UncleCheng-li/AI_Animation](https://github.com/UncleCheng-li/AI_Animation)
 - **tt-a1i / Cocoon AI** —— dynamic-archify
 - 所有在 GitHub 上开源并允许再分发的技能作者
 

@@ -19,7 +19,7 @@
 
 | 板块 | 目录 | 内容 |
 | --- | --- | --- |
-| **AI 技能库** | `skills/` | 54 个技能，五家AI 工具共享同一份。加一个技能，五家同时生效 |
+| **AI 技能库** | `skills/` | 62 个技能，五家AI 工具共享同一份。加一个技能，五家同时生效 |
 | **AI 工具配置** | `agents/` | WorkBuddy / Cursor / Claude Code / VS Code / Cursor BYOK 五套user rule 与设置模板 |
 | **Git & GitHub** | `git-github/` | 使用教程 + 提交身份模板（`gitconfig.template`），解决中文文件名、提交身份这类常见坑 |
 | **工具链** | `codetool/` + `install/` | Git / gh / MinGW-w64 / ninja / Node.js / Python / 7-Zip 的探测与安装，以及一键配置脚本 |
@@ -45,7 +45,7 @@
 
 ### 1. 一份技能库，五家 AI 工具共享
 
-54 个技能放在 `skills/` 一个目录里，WorkBuddy / Cursor / Claude Code / VS Code /
+62 个技能放在 `skills/` 一个目录里，WorkBuddy / Cursor / Claude Code / VS Code /
 Cursor BYOK 通过符号链接指过来。**加一个技能，五家同时生效。**
 
 | 类别 | 代表技能 |
@@ -174,7 +174,7 @@ AI一键配置/
 │   ├── 03-setup-agents.ps1      部署技能库 + 配置五家 AI 工具
 │   └── privacy-scan.js          隐私与合规扫描器
 │
-├── skills/                      54 个技能（扁平结构，每层一个文件夹）
+├── skills/                      62 个技能（扁平结构，每层一个文件夹）
 │   ├── 技能库统一规则.md         库内总纲
 │   ├── <技能名>/SKILL.md        每个技能的说明书
 │   └── .../ORIGIN.md            第三方技能才有：来源 + 致谢
@@ -297,7 +297,7 @@ node install/privacy-scan.js --fix    # 扫描并自动脱敏
 | --- | --- | --- | --- |
 | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | **Addy Osmani**（Google Chrome 团队） | 22 | MIT |
 | [obra/superpowers](https://github.com/obra/superpowers) | **Jesse Vincent** | 10 | MIT |
-| [UncleCheng-li/AI_Animation](https://github.com/UncleCheng-li/AI_Animation) | **UncleCheng-li** | 1 | MIT |
+| [UncleCheng-li/AI_Animation](https://github.com/UncleCheng-li/AI_Animation) | **UncleCheng-li** | 9 | MIT |
 | architecture-diagram-generator | **tt-a1i** / **Cocoon AI** | 1 | MIT |
 
 每个第三方技能目录下都有 **`ORIGIN.md`**，写明来源、作者、许可与使用须知。
