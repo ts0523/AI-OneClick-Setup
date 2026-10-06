@@ -15,9 +15,9 @@
 
 | 项 | 数量 | 说明 |
 | --- | --- | --- |
-| 收录技能总数 | **62** | 全部在 `skills/`，扁平结构 |
+| 收录技能总数 | **63** | 全部在 `skills/`，扁平结构 |
 | ├ 本项目原创 | 20 | frontmatter 标 `agent_created: true` |
-| └ 第三方 MIT 收录 | 42 | 分属 4 个开源项目，逐个署名 |
+| └ 第三方 MIT 收录 | 43 | 分属 4 个开源项目，逐个署名 |
 | 原创文档与脚本 | 6 | `README.md` / `CREDITS.md` / 教程 / 脚本 / 扫描器 |
 | 仓库体积 | 约 12 MB | 不含二进制安装包 |
 
@@ -27,17 +27,29 @@
 | --- | --- | --- | --- | --- |
 | 1 | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | **Addy Osmani**（Google Chrome 团队工程负责人） | 22 | MIT |
 | 2 | [obra/superpowers](https://github.com/obra/superpowers) | **Jesse Vincent** | 10 | MIT |
-| 3 | [UncleCheng-li/AI_Animation](https://github.com/UncleCheng-li/AI_Animation)（1.4k star） | **UncleCheng-li** | 9 | MIT |
+| 3 | [UncleCheng-li/AI_Animation](https://github.com/UncleCheng-li/AI_Animation)（1.4k star） | **UncleCheng-li** | 10 | MIT |
 | 4 | [Cocoon-AI/architecture-diagram-generator](https://github.com/Cocoon-AI/architecture-diagram-generator) → 本仓库改名为 `dynamic-archify` | **tt-a1i**（重写）/ **Cocoon AI**（原始） | 1 | MIT |
-| | | | **小计 42** | |
+| | | | **小计 43** | |
 
-> **UncleCheng-li/AI_Animation 收录了 9 个**：`scholar-notes`（学霸笔记）、`card-theater`（卡片剧场）、
-> `flowchart`（流程图）、`network-protocol-viz`（网络协议可视化）、`phone-ui-demos`（手机 UI 演示）、
-> `ppt-animation`（PPT 翻页）、`stacked-data-cards`（叠放数据卡）、`video-shot-demos`（分镜演示）、
+> **UncleCheng-li/AI_Animation 共 11 个技能，本仓库收录其中 10 个**：
+> `scholar-notes`（学霸笔记）、`card-theater`（卡片剧场）、`flowchart`（流程图）、
+> `network-protocol-viz`（网络协议可视化）、`phone-ui-demos`（手机 UI 演示）、
+> `ppt-animation`（PPT 翻页）、`stacked-data-cards`（叠放数据卡）、
+> `swiss-shot-demos`（瑞士风格分镜演示）、`video-shot-demos`（分镜演示）、
 > `win11-ui-demos`（仿 Win11 演示）。
-> 其中 `win11-ui-demos` 与 `video-shot-demos` 的示例素材（`assets/examples/`，约 100 MB GIF）
-> **未入库** —— 技能本体（`SKILL.md` / `references/` / `template.html`）完整收录，可正常加载，
-> 需要看效果请去上游仓库。
+>
+> **未收录 1 个**：`ui2v-motions` —— 约 621 MB，其中 9479 个文件集中在
+> `01_动效库/itelmn/` 一个目录（打包进来的第三方动效库），体积与收录价值不成比例。
+>
+> `win11-ui-demos`、`video-shot-demos`、`swiss-shot-demos` 三者的示例素材
+> （`assets/examples/`，合计约 120 MB GIF）**未入库** —— 技能本体
+> （`SKILL.md` / `references/` / `assets/`）完整收录，可正常加载，需要看效果请去上游仓库。
+>
+> `swiss-shot-demos` 内含两个嵌套技能包（`archify`、`diagram-design`），
+> **它们有各自的独立版权**（`archify` 属 **tt-a1i**），已按原样保留并各自带 `LICENSE`。
+> ⚠️ **注意**：`archify/THIRD_PARTY_NOTICES.md` 记录它引用了 CC-BY-SA与 **CC-BY-NC-SA**
+> 的第三方商标素材（Jenkins、Vue.js等）。**该目录不适用于直接商用**，
+> 商用前请先移除对应素材。详见该技能目录的 `ORIGIN.md`。
 >
 > 另有 1 个技能 `test-driven-development` 来自 superpowers 库但**未收录**，
 > 因为 Addy Osmani 的同名版本内容更完整，只收录了后者。原因写在该目录的 `ORIGIN.md` 里。
@@ -46,7 +58,7 @@
 
 - **`ORIGIN.md`** —— 写明作者、仓库地址、原路径、许可条款、改了什么、使用须知。
 - **`LICENSE`** —— 上游的 MIT 许可全文原文，**一个字都没改**。
-  MIT 协议要求「所有副本都包含版权声明」，所以这 42 个目录一个都不能少。
+  MIT 协议要求「所有副本都包含版权声明」，所以这 43 个目录一个都不能少。
 
 ---
 
@@ -100,7 +112,7 @@
 | `verification-before-completion` | 声称「完成」前必须验证 |
 | `writing-plans` | 写实现计划 |
 
-### 来自其他开源项目（10 个）
+### 来自其他开源项目（11 个）
 
 | 技能 | 作者 | 来源仓库 | 处理方式 |
 | --- | --- | --- | --- |
@@ -111,6 +123,7 @@
 | `phone-ui-demos`（手机 UI 演示） | **UncleCheng-li** | 同上（`skills/phone-ui-demos`） | 同上 |
 | `ppt-animation`（PPT 翻页演示） | **UncleCheng-li** | 同上（`skills/ppt-animation`） | 同上 |
 | `stacked-data-cards`（叠放数据卡） | **UncleCheng-li** | 同上（`skills/stacked-data-cards`） | 同上 |
+| `swiss-shot-demos`（瑞士风格分镜） | **UncleCheng-li**<br>（内嵌 `archify` 属 **tt-a1i**） | 同上（`skills/swiss-shot-demos`） | 技能本体完整收录，SKILL.md 与上游逐字节一致；`assets/examples/` 未入库；内嵌两个技能包各自带独立 LICENSE |
 | `video-shot-demos`（分镜演示） | **UncleCheng-li** | 同上（`skills/video-shot-demos`） | 技能本体完整收录；`assets/examples/`（约 49 MB）未入库 |
 | `win11-ui-demos`（仿 Win11 演示） | **UncleCheng-li** | 同上（`skills/win11-ui-demos`） | 技能本体完整收录；`assets/examples/`（约 51 MB）未入库 |
 | `dynamic-archify` | **tt-a1i** 重写<br>**Cocoon AI** 原始 | [Cocoon-AI/architecture-diagram-generator](https://github.com/Cocoon-AI/architecture-diagram-generator) | 原文收录，保留 `LICENSE` 中**两行**版权声明 |
@@ -206,7 +219,7 @@
 | 范围 | 许可 |
 | --- | --- |
 | 本项目原创脚本与文档 | **MIT License**（见根目录 `LICENSE`） |
-| 第三方技能（42 个） | 各自遵循其原始许可，**全部为 MIT**，详见各目录的 `ORIGIN.md` |
+| 第三方技能（43 个） | 各自遵循其原始许可，**全部为 MIT**，详见各目录的 `ORIGIN.md` |
 | 商标 / 商标性内容 | 无。仓库不含任何第三方厂商素材 |
 
 第三方技能不受本项目 MIT 许可约束，使用前请先读对应目录的 `ORIGIN.md`。
@@ -234,7 +247,7 @@
 
 - **Addy Osmani** —— 22 个工程纪律技能
 - **Jesse Vincent** —— 10 个 superpowers 技能
-- **UncleCheng-li** —— 9 个演示动画技能（含 scholar-notes），来源 [UncleCheng-li/AI_Animation](https://github.com/UncleCheng-li/AI_Animation)
+- **UncleCheng-li** —— 10 个演示动画技能（含 scholar-notes），来源 [UncleCheng-li/AI_Animation](https://github.com/UncleCheng-li/AI_Animation)
 - **tt-a1i / Cocoon AI** —— dynamic-archify
 - 所有在 GitHub 上开源并允许再分发的技能作者
 

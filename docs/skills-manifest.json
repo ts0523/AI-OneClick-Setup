@@ -1,17 +1,17 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "ai-oneclick-skills",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "updated": "2026-10-06",
-  "total": 62,
+  "total": 63,
   "summary": {
     "original": 20,
-    "third-party": 42,
-    "totalKB": 34555,
+    "third-party": 43,
+    "totalKB": 40219,
     "bySource": {
       "addyosmani/agent-skills": 22,
       "obra/superpowers": 10,
-      "UncleCheng-li/AI_Animation": 9,
+      "UncleCheng-li/AI_Animation": 10,
       "Cocoon-AI/architecture-diagram-generator": 1
     }
   },
@@ -19,7 +19,7 @@
   "notIncluded": {
     "reason": "许可不明确或明确禁止再分发，详见 CREDITS.md",
     "skills": [],
-    "note": "原先误将8 个 UncleCheng-li/AI_Animation 技能列为「许可不明未收录」，实际该仓库为 MIT（Copyright (c) 2026 Unclecheng），已于 2.1.0 全部收录。其中 win11-ui-demos 与 video-shot-demos 的 assets/examples/（约 100 MB GIF 素材）未入库，技能本体完整，需素材请去上游取。"
+    "note": "UncleCheng-li/AI_Animation 共 11 个技能，本仓库已收录 10 个。未收录的是 ui2v-motions（约 621 MB，其中 9479 个文件集中在 01_动效库/itelmn/ 一个目录，属于打包进来的第三方动效库），收录价值与体积不成比例。win11-ui-demos、video-shot-demos、swiss-shot-demos 三者的 assets/examples/ 示例素材（合计约 120 MB GIF）未入库，技能本体完整收录，可正常加载，需要素材请去上游取。"
   },
   "skills": [
     {
@@ -420,6 +420,15 @@
       "from": "obra/superpowers",
       "author": "Jesse Vincent",
       "license": "MIT License, Copyright (c) 2025 Jesse Vincent"
+    },
+    {
+      "name": "swiss-shot-demos",
+      "description": "制作瑞士国际主义风格（Swiss Style）+ 图表驱动的视频分镜演示动画：纸灰底、炭黑墨、唯一强调橙的编辑部级排版，每页用匹配的图表代替文字堆砌，一镜一 HTML。",
+      "kb": 5664,
+      "origin": "third-party",
+      "from": "UncleCheng-li/AI_Animation",
+      "author": "UncleCheng-li",
+      "license": "MIT License, Copyright (c) 2026 Unclecheng"
     },
     {
       "name": "systematic-debugging",
