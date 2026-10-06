@@ -78,7 +78,7 @@ Python 无第三方依赖是刻意的 —— clone 下来就能跑，不用装�
 3. `PATH`
 4. 各平台常见安装位置
 
-`local-paths.json` 已在 `.gitignore` 里，不会把你的机器路径提交上去。
+`local-paths.json` 已在忽略清单里，不会把你的机器路径提交上去。
 
 ## 用法
 

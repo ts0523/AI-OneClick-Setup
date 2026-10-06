@@ -176,7 +176,7 @@ PROMO_SUGGESTIONS = {
 # 本仓库**不内置任何真实作品名**（那本身就是分发他人 IP 名，不合适）。
 # 名单走外置，三选一，按优先级：
 #   1. 环境变量 PROMO_IP_WATCHLIST 指向的文本文件
-#   2. assets/ip-watchlist.txt（自己填，已在 .gitignore 里）
+#   2. assets/ip-watchlist.txt（自己填，已在忽略清单里）
 #   3. 装了姊妹 skill `app-listing-kit` 时复用它的词库
 # 仓库里带的是 assets/ip-watchlist.example.txt（只有格式说明），复制改名即可。
 
@@ -540,7 +540,7 @@ def browser_shot(browser, html_path, out_png, w, h, ud_dir, budget_ms=8000, time
 #
 # 本 skill 不自带 ffmpeg / 浏览器，也不假设它们装在哪。定位顺序统一为：
 #   1. 环境变量            PROMO_FFMPEG / PROMO_BROWSER / PROMO_GXX / PROMO_RAYLIB
-#   2. 本地覆盖文件        scripts/local-paths.json（已在 .gitignore 里）
+#   2. 本地覆盖文件        scripts/local-paths.json（已在忽略清单里）
 #   3. PATH                shutil.which
 #   4. 各平台常见安装位置
 # 这样仓库里不会写死任何一台机器的私有路径。
